@@ -1,0 +1,25 @@
+# build.ps1 writes everything it produces -- obj/, obj-test/, test_host.exe,
+# version.dll -- under build/, so this one line covers all of it. The stray
+# `obj/` entry that used to sit below it never matched: a directory pattern,
+# and build.ps1's obj dirs live nested inside build/, not at the repo root.
+# git ls-files build confirms nothing under it is tracked. (2026-09-17)
+build/
+
+# Two compiler outputs tracked as source from before build.ps1 moved its own
+# outputs under build/ (git rm --cached, 2026-09-17). AV on this machine
+# intermittently locks the .obj mid-build, and deleting a TRACKED file to
+# recover looks like a real change and has been committed by accident; left
+# on disk, untracked, so recovery is invisible to git again.
+src/ekmod/test_host.exe
+src/ekmod/test_host.obj
+
+*.log
+scratchpad/
+
+# SDD scratch: briefs, reports and review packages. Several agents asserted
+# this was already ignored; it was not, and one report reached master.
+.superpowers/
+
+# The name generator is run by hand from the repo root, so Python's
+# bytecode cache lands in tools/ rather than anywhere already ignored.
+__pycache__/

@@ -1,0 +1,25 @@
+; Export names for the version.dll proxy.
+;
+; A .def rather than __declspec(dllexport): the names must match the real
+; version.dll EXACTLY, because eduke32.exe imports them by name. A .def states
+; them literally instead of trusting the compiler's decoration rules, and it
+; makes the intended surface reviewable in one place.
+;
+; LIBRARY is deliberately omitted -- naming it here would stamp the DLL's
+; internal name, and the file must present itself as version.dll by filename.
+EXPORTS
+    GetFileVersionInfoA
+    GetFileVersionInfoByHandle
+    GetFileVersionInfoExA
+    GetFileVersionInfoExW
+    GetFileVersionInfoSizeA
+    GetFileVersionInfoSizeExA
+    GetFileVersionInfoSizeExW
+    GetFileVersionInfoSizeW
+    GetFileVersionInfoW
+    VerFindFileA
+    VerFindFileW
+    VerInstallFileA
+    VerInstallFileW
+    VerQueryValueA
+    VerQueryValueW

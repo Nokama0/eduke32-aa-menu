@@ -1,0 +1,37 @@
+name: Bug report
+description: Something in the menu does not work as expected
+labels: [bug]
+body:
+  - type: input
+    id: game
+    attributes:
+      label: Game and store build
+      description: Which store (Steam, GOG, other) and which build of the game
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Menu version
+      description: The release tag you installed, for example v1.0.0
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected instead
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Log file
+      description: The log file ekmod.log in the game folder (paste its contents or the relevant lines)
+      render: text
